@@ -72,6 +72,16 @@ class SimpleFtpWindow(QtGui.QWidget):
         self.server.close_all()
         self.th.join()
         self.Result.setText('off')
+        
+    def closeEvent(self, event):
+        reply = QtGui.QMessageBox.question(self, 'Message',
+            "Are you sure to quit?", QtGui.QMessageBox.Yes | 
+            QtGui.QMessageBox.No, QtGui.QMessageBox.No)
+        
+        if reply == QtGui.QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
 
 if __name__ == '__main__':
     try:
