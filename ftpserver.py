@@ -63,7 +63,7 @@ class SimpleFtpWindow(QtGui.QWidget):
         logging.basicConfig(filename='ftpd.log', level=logging.INFO)
         handler = FTPHandler
         handler.authorizer = authorizer
-        self.server = FTPServer(('127.0.0.1', 21), handler)
+        self.server = FTPServer(('0.0.0.0', 21), handler)
         self.th = threading.Thread(target=self.server.serve_forever)
         self.th.start()
         self.Result.setText('on, 127.0.0.1:21, anonymous')
